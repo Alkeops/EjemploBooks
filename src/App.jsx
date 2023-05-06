@@ -30,7 +30,6 @@ const CreateBook = ({ addBook }) => {
     </form>
   );
 };
- Resiñta se removeEventListener,iu ferte
 
 
 function App() { 
