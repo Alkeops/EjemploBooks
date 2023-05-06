@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 const Book = ({ title }) => {
@@ -10,14 +11,42 @@ const Book = ({ title }) => {
   );
 };
 
-function App() {
+const CreateBook = ({ addBook }) => {
+  const [book, setBook] = useState("");
+  const handleChange = (event) => {
+    setBook(event.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addBook(book);
+    setBook("");
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Título" value={book} onChange={handleChange} />
+      <button type="submit" disabled={!book}>Crear Libro</button>
+    </form>
+  );
+};
+ Resiñta se removeEventListener,iu ferte
+
+
+function App() { 
+  const [books, setBooks] = useState([
+    "Dracula",
+    "La fundación",
+    "Matar a un ruiseñor",
+  ]);
   return (
     <div>
+      <CreateBook addBook={(book) => setBooks([...books, book])} />
       <h2>Best Sellers</h2>
       <div className="books">
-        <Book title="Dracula" />
-        <Book title="El señor de los anillos" />
-        <Book title="Cien años de soledad" />
+        {books.map((book, index) => (
+          <Book key={index} title={book} />
+        ))}
       </div>
     </div>
   );

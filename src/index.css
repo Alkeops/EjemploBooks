@@ -29,15 +29,20 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #646cff;
+  color: rgb(245, 245, 245);
   cursor: pointer;
   transition: border-color 0.25s;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 button:hover {
   border-color: #646cff;
@@ -46,4 +51,3 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
