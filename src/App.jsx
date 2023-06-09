@@ -11,40 +11,42 @@ const Book = ({ title }) => {
   );
 };
 
+
 const CreateBook = ({ addBook }) => {
   const [book, setBook] = useState("");
-  const handleChange = (event) => {
-    setBook(event.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     addBook(book);
     setBook("");
-  }
-
+  };
+  const handleChange = (e) => {
+    setBook(e.target.value);
+  };
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Título" value={book} onChange={handleChange} />
-      <button type="submit" disabled={!book}>Crear Libro</button>
+      <input value={book} onChange={handleChange} />
+      <button disabled={!book} type="submit">
+        Añadir libro
+      </button>
     </form>
   );
 };
 
 
-function App() { 
+function App() {
   const [books, setBooks] = useState([
     "Dracula",
-    "La fundación",
-    "Matar a un ruiseñor",
+    "El señor de los anillos",
+    "Cien años de soledad",
+    "Los miserables",
   ]);
   return (
     <div>
       <CreateBook addBook={(book) => setBooks([...books, book])} />
       <h2>Best Sellers</h2>
       <div className="books">
-        {books.map((book, index) => (
-          <Book key={index} title={book} />
+        {books.map((element, idx) => (
+          <Book title={element} key={idx} />
         ))}
       </div>
     </div>
