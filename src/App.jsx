@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 const Book = ({ title }) => {
@@ -38,7 +38,6 @@ function App() {
     "Cien años de soledad",
     "Los miserables",
   ]);
-
   return (
     <div>
       <CreateBook addBook={(book) => setBooks([...books, book])} />
@@ -51,5 +50,40 @@ function App() {
     </div>
   );
 }
+
+/* function App() {
+  const [books, setBooks] = useState([
+    "Dracula",
+    "El señor de los anillos",
+    "Cien años de soledad",
+    "Los miserables",
+  ]);
+  const [book, setBook] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setBooks([...books, book]);
+    setBook("");
+  };
+  const handleChange = (e) => {
+    setBook(e.target.value);
+  };
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input value={book} onChange={handleChange} />
+        <button disabled={!book} type="submit">
+          Añadir libro
+        </button>
+      </form>
+
+      <h2>Best Sellers</h2>
+      <div className="books">
+        {books.map((element, idx) => (
+          <Book title={element} key={idx} />
+        ))}
+      </div>
+    </div>
+  );
+} */
 
 export default App;
