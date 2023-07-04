@@ -37,7 +37,7 @@ function App() {
     "El señor de los anillos",
     "Cien años de soledad",
     "Los miserables",
-  ]);
+  ]); 
   return (
     <div>
       <CreateBook addBook={(book) => setBooks([...books, book])} />
